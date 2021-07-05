@@ -1,0 +1,13 @@
+{
+
+    "name": "Vlad",
+
+    "accessPolicy": {
+
+        "id": "accessPolicyUUID",
+
+        "type": "AccessPolicy"
+
+    }
+
+}

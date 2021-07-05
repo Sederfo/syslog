@@ -1,0 +1,35 @@
+{
+
+    "name": "name",
+
+    "hostName": "host name",
+
+    "natID": "cisco123",
+
+    "regKey": "regkey",
+
+    "type": "Device",
+
+    "license_caps": [
+
+        "MALWARE",
+
+        "URLFilter",
+
+        "PROTECT",
+
+        "CONTROL",
+
+        "VPN"
+
+    ],
+
+    "accessPolicy": {
+
+        "id": "accessPolicyUUID",
+
+        "type": "AccessPolicy"
+
+    }
+
+}
