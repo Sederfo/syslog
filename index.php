@@ -1,6 +1,7 @@
 <?php
 if (isset($_GET["error"])){
   $error = $_GET["error"];
+  //dispay error message if error is returned by python script
   if ($error != "none")
     echo sprintf("
     
@@ -11,6 +12,7 @@ if (isset($_GET["error"])){
       
       ", "'". $error. "'");
   else 
+  //display success message if python script successfully executed
     echo sprintf("
     
       <script>

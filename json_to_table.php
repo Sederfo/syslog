@@ -8,7 +8,6 @@
     <title>JSON Table</title>
   </head>
   <body>
-
 <?php
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["file"]["name"]);
@@ -42,6 +41,8 @@ if ($uploadOk == 0) {
     ///////////////// DECODE JSON FILE /////////////////
     $string = file_get_contents($target_file);
     $data = json_decode($string, TRUE);
+
+    //get keys to render table header
     $keys = array_keys($data);
     
     //open table
@@ -53,13 +54,13 @@ if ($uploadOk == 0) {
       echo "<th>" . $row . "</th>";
     echo "</tr>";
 
-    echo "<tr>";
-
     //fill in values
+    echo "<tr>";
     foreach($data as $row)
       if (!is_array($row)){
         echo "<td> " . $row . "</td>";
       }
+      //if json value is an array, iterate through it and draw all its elements in a single <td> tag
       else{
         echo "<td>";
         foreach($row as $el){
@@ -67,24 +68,14 @@ if ($uploadOk == 0) {
         }
         echo "</td>";
       }
-
     echo "</tr>";
     
-
     //close table
     echo "</table>";
-
-
-
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
-
 }
-
-
 ?>
-
-
   </body>
 </html>

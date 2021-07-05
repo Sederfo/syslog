@@ -1,6 +1,8 @@
 import json
 import sys
 
+#this script is NOT used and NOT relevant
+
 try:
     file_name = sys.argv[1]
     if ".json" not in file_name:

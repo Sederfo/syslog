@@ -2,7 +2,6 @@ import re
 import csv
 import json
 import sys
-import os
 import traceback
 
 try:
@@ -38,11 +37,12 @@ try:
     pattern_message_text = re.compile(':(.*)')
     message_text = re.search(pattern_message_text, syslog_msg).group()[1:].strip()
 
+    #append to csv file
     with open('syslog_msg.csv', mode='a') as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         csv_writer.writerow([dates[0], dates[1], facility, severity, from_host, message_text])
 
-
+    #write json file
     with open('syslog_msg.json', mode='w') as json_file:
         msg_dict = {
             "received at": dates[0],
@@ -52,12 +52,11 @@ try:
             "from host": from_host,
             "message": message_text
         }
-
         json.dump(msg_dict, json_file)
-
 
 except Exception as e:
     print("Message incorrectly formatted!")
     traceback.print_exc()
 else:
+    #this message is checked by syslog_msg_formatter.php to determine if an error occured or not
     print("Message successfully processed!")
